@@ -5,14 +5,12 @@ module ViGmail
     end
 
     def attributes
-      data = %w(To From Subject Date).map do |field|
+      data = %w(From Subject Date).map do |field|
         [field.downcase, find_value(field)]
       end
 
       Hash[data]
     end
-
-    private
 
     def find_value(name)
       @headers.find { |header| header.name == name }
