@@ -32,11 +32,7 @@ ActiveRecord::Schema.define(version: 20151023105933) do
   create_table "message_threads", force: :cascade do |t|
     t.integer "user_id"
     t.string  "source_id"
-    t.string  "subject"
-    t.string  "snippet"
   end
-
-  add_index "message_threads", ["user_id"], name: "index_message_threads_on_user_id"
 
   create_table "messages", force: :cascade do |t|
     t.integer  "user_id"

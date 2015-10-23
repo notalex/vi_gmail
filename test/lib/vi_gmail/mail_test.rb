@@ -16,9 +16,8 @@ describe ViGmail::Mail do
         message = Message.first
         message.detail.to.must_equal 'Vimail Tester <vi.mail.tester@gmail.com>'
         message.detail.plain_body.must_match /Bring your contacts and mail into Gmail/
-        message.thread.subject.must_equal 'Three tips to get the most out of Gmail'
-        message.thread.snippet.must_match /Hi Vimail Tips to get the most out of Gmail/
-        message.thread.snippet.must_equal message.snippet
+        message.subject.must_equal 'Three tips to get the most out of Gmail'
+        message.snippet.must_match /Hi Vimail Tips to get the most out of Gmail/
         message.labels.map(&:name).must_equal %w[INBOX UNREAD]
         message.date.to_s.must_equal '2015-09-17 09:30:58 UTC'
 
