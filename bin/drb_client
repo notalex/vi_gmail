@@ -1,0 +1,31 @@
+#! /usr/bin/env ruby
+
+require_relative '../lib/server_manager'
+
+class DrbClient
+  def initialize
+    @method_name = ARGV.shift
+    query_server
+  end
+
+  private
+
+  def query_server
+    send_message
+  rescue DRb::DRbBadURI, DRb::DRbConnError
+    ServerManager.start_server
+    sleep 1
+    send_message
+  end
+
+  def send_message
+    server = DRbObject.new_with_uri(drb_uri)
+    puts server.send(@method_name, *ARGV)
+  end
+
+  def drb_uri
+    ServerManager.drb_uri.to_s
+  end
+end
+
+DrbClient.new

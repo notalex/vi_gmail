@@ -1,0 +1,8 @@
+#! /usr/bin/env ruby
+
+ENV['VI_GMAIL_ENV'] ||= 'development'
+
+$LOAD_PATH << File.expand_path('../../lib', __FILE__)
+require 'vi_gmail'
+
+ViGmail::Server.start

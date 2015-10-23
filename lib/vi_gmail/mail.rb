@@ -22,6 +22,12 @@ module ViGmail
       end
     end
 
+    class << self
+      def inbox
+        Message.select(:id, :subject).map(&:attributes)
+      end
+    end
+
     private
 
     def save_message(source_message, message_header)
