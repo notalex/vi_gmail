@@ -120,6 +120,7 @@ GEM
       thread_safe (~> 0.1)
     uber (0.0.15)
     vcr (2.9.3)
+    vimrunner (0.3.1)
     webmock (1.21.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
@@ -139,4 +140,5 @@ DEPENDENCIES
   sqlite3
   standalone_migrations
   vcr
+  vimrunner
   webmock
