@@ -5,6 +5,8 @@ require 'vi_gmail'
 require 'minitest/autorun'
 require 'mocha/mini_test'
 require 'database_cleaner'
+require 'factory_girl'
+require 'forgery'
 require 'vcr'
 
 VCR.configure do |config|
@@ -13,6 +15,9 @@ VCR.configure do |config|
 end
 
 class MiniTest::Spec
+  include FactoryGirl::Syntax::Methods
+  FactoryGirl.find_definitions
+
   before do
     DatabaseCleaner.start
   end

@@ -36,8 +36,11 @@ GEM
     database_cleaner (1.5.0)
     erubis (2.7.0)
     extlib (0.9.16)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
+    forgery (0.6.0)
     google-api-client (0.9.pre3)
       activesupport (>= 3.2)
       addressable (~> 2.3)
@@ -128,6 +131,8 @@ DEPENDENCIES
   activerecord
   byebug
   database_cleaner
+  factory_girl
+  forgery
   google-api-client (~> 0.9.pr3)
   launchy (~> 2.4)
   mocha
