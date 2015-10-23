@@ -1,1 +1,6 @@
+require 'vi_gmail/models/user'
+require 'vi_gmail/models/message_thread'
 require 'vi_gmail/models/message'
+require 'vi_gmail/models/message_detail'
+require 'vi_gmail/models/label'
+require 'vi_gmail/models/poll_history'
