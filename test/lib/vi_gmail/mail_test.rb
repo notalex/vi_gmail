@@ -14,17 +14,17 @@ describe ViGmail::Mail do
         Message.count.must_equal 7
 
         message = Message.first
-        message.detail.to.must_equal 'vi.mail.tester@gmail.com'
-        message.detail.plain_body.must_match /Hey Vimail/
-        message.thread.subject.must_equal 'Getting started on Google+'
-        message.thread.snippet.must_match /Welcome to Google+/
+        message.detail.to.must_equal 'Vimail Tester <vi.mail.tester@gmail.com>'
+        message.detail.plain_body.must_match /Bring your contacts and mail into Gmail/
+        message.thread.subject.must_equal 'Three tips to get the most out of Gmail'
+        message.thread.snippet.must_match /Hi Vimail Tips to get the most out of Gmail/
         message.thread.snippet.must_equal message.snippet
-        message.labels.map(&:name).must_equal %w[CATEGORY_SOCIAL INBOX UNREAD]
-        message.date.to_s.must_equal '2015-10-23 14:24:00 UTC'
+        message.labels.map(&:name).must_equal %w[INBOX UNREAD]
+        message.date.to_s.must_equal '2015-09-17 09:30:58 UTC'
 
-        thread = Message.all[2].thread
+        thread = Message.all[4].thread
         thread.messages.count.must_equal 2
-        thread.subject.must_equal 'Re: ViGmail Test'
+        thread.messages.last.subject.must_equal 'Re: ViGmail Test'
 
         PollHistory.count.must_equal 1
         PollHistory.first.last_fetched_id.must_equal '1138'

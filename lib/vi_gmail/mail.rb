@@ -13,7 +13,7 @@ module ViGmail
 
     def save_to_db
       list_thread_response = service.list_user_threads('me')
-      MessageThread.create_threads(@user, self, list_thread_response.threads)
+      MessageThread.create_threads(@user, self, list_thread_response.threads.reverse)
       PollHistory.save_history_id(@user, list_thread_response.threads.last.history_id)
     end
 
