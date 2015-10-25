@@ -19,7 +19,7 @@ module ServerManager
   end
 
   def kill_any_existing_servers
-    process_ids = %x(pgrep -f vi_gmail_server).split.map(&:to_i)
+    process_ids = %x(pgrep -f "#{ server_command }$").split.map(&:to_i)
 
     process_ids.each do |process_id|
       Process.kill(:TERM, process_id)
@@ -30,6 +30,10 @@ module ServerManager
 
   def start_new_server
     bin_path = File.expand_path('../../bin', __FILE__)
-    system("#{ bin_path }/vi_gmail_server &")
+    system("#{ bin_path }/#{ server_command } &")
+  end
+
+  def server_command
+    "vi_gmail_server #{ ENV['VI_GMAIL_ENV'] }"
   end
 end
