@@ -14,6 +14,7 @@ class MiniTest::Spec
   def kill_vim
     FileUtils.remove_entry(tmp_dir_path)
     vim.kill
+    ServerManager.kill_any_existing_servers
   end
 
   def tmp_dir_path
