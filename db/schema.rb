@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20151023105933) do
     t.string  "source_id"
   end
 
+  add_index "message_threads", ["user_id"], name: "index_message_threads_on_user_id"
+
   create_table "messages", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "thread_id"
@@ -45,7 +47,6 @@ ActiveRecord::Schema.define(version: 20151023105933) do
   end
 
   add_index "messages", ["thread_id"], name: "index_messages_on_thread_id"
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
 
   create_table "poll_histories", force: :cascade do |t|
     t.integer "user_id"
