@@ -3,12 +3,11 @@ class MiniTest::Spec
 
   def setup_vim
     vim.command("cd #{ tmp_dir_path }")
-    plugin_path = File.expand_path('../../../lib/vim/', __FILE__)
-    vim.add_plugin(plugin_path, 'plugin/vi_gmail.vim')
+    vim.add_plugin(ENV['VI_GMAIL_PLUGIN_PATH'], 'plugin/vi_gmail.vim')
   end
 
   def vim
-    @vim ||= Vimrunner.start_gvim
+    @vim ||= Vimrunner.start
   end
 
   def kill_vim

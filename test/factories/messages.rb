@@ -6,6 +6,6 @@ FactoryGirl.define do
     from { Forgery::Internet.email_address }
     subject { Forgery::Email.subject }
     snippet { Forgery::Email.subject }
-    date { Forgery::Date.date }
+    date { Forgery::Date.date(past: true) }
   end
 end

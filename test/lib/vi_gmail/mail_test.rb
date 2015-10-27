@@ -1,9 +1,11 @@
 require 'test_helper'
 
 describe ViGmail::Mail do
+  include DbCleaner
+
   describe 'save_to_db' do
     before do
-      User.create!(email: 'vi.mail.tester@gmail.com', name: 'Vigmail')
+      @user = create(:user)
       ViGmail::GoogleClient.any_instance.stubs(:authorize)
     end
 

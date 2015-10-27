@@ -2,6 +2,9 @@ class Label < ActiveRecord::Base
   belongs_to :user
   belongs_to :message
 
+  scope :inbox, -> { where('name = ?', 'INBOX') }
+  scope :unread, -> { where('name = ?', 'UNREAD') }
+
   class << self
     def create_labels(message, label_names)
       label_names.each do |label_name|

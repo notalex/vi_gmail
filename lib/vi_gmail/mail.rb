@@ -20,11 +20,5 @@ module ViGmail
     def fetch_thread(source_thread_id)
       service.get_user_thread('me', source_thread_id)
     end
-
-    class << self
-      def inbox
-        Message.select(:id, :subject).map(&:attributes)
-      end
-    end
   end
 end

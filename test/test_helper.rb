@@ -12,6 +12,7 @@ require 'vcr'
 require 'vimrunner'
 require 'vimrunner/testing'
 require 'support/vim_helpers'
+require 'support/db_cleaner'
 require 'support/vimrunner_core_extensions'
 
 VCR.configure do |config|
@@ -24,10 +25,10 @@ class MiniTest::Spec
   FactoryGirl.find_definitions
 
   before do
-    DatabaseCleaner.start
+    clean_records_from_tests_without_db_cleaner
   end
+end
 
-  after do
-    DatabaseCleaner.clean
-  end
+def clean_records_from_tests_without_db_cleaner
+  User.destroy_all
 end
